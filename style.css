@@ -1,0 +1,19 @@
+body {
+    background-color: white;
+}
+
+.navbar {
+    background-color:black !important;
+}
+
+.card-summary {
+    border-left: 4px solid blue;
+}
+
+.card-summary.income {
+    border-left-color: green;
+}
+
+.card-summary.expense {
+    border-left-color: red;
+}

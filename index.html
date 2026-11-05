@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--. Navigation Bar -->
+    <nav class="navbar navbar-dark px-4 py-3 mb-4">
+        <span class="navbar-brand mb-0 h1 fw-bold">Personal Expense Tracker</span>
+    </nav>
+
+    <div class="container mb-5">
+        
+        <div class="mb-4">
+            <h3 class="fw-bold">Financial Dashboard</h3>
+            <p class="text-muted">Manage your income and expenses in one place.</p>
+        </div>
+
+    
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card card-summary income shadow-sm p-3">
+                    <div class="card-body">
+                        <h6 class="text-muted mb-1">Total Income</h6>
+                        <h4 class="fw-bold text-success" id="totalIncome">LKR 0.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-summary expense shadow-sm p-3">
+                    <div class="card-body">
+                        <h6 class="text-muted mb-1">Total Expenses</h6>
+                        <h4 class="fw-bold text-danger" id="totalExpenses">LKR 0.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-summary shadow-sm p-3">
+                    <div class="card-body">
+                        <h6 class="text-muted mb-1">Current Balance</h6>
+                        <h4 class="fw-bold text-primary" id="currentBalance">LKR 0.00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title fw-bold mb-3">Add a Transaction</h5>
+                <form id="transactionForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="transactionType" class="form-label">Transaction Type</label>
+                            <select class="form-select" id="transactionType" required>
+                                <option value="Income">Income</option>
+                                <option value="Expense">Expense</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" placeholder="e.g. Monthly allowance" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="amount" class="form-label">Amount (LKR)</label>
+                            <input type="number" step="0.01" class="form-control" id="amount" placeholder="Enter amount" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" id="category" required>
+                                <option value="" selected disabled>Select a category</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Allowance">Allowance</option>
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="transactionDate" class="form-label">Transaction Date</label>
+                            <input type="date" class="form-control" id="transactionDate" required>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary px-4">Add Transaction</button>
+                        <!-- 6. Clear Button to reset the form -->
+                        <button type="reset" class="btn btn-outline-secondary ms-2" id="clearBtn">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold mb-3">Transaction History</h5>
+                
+                
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="filterType" class="form-label text-muted small">Filter by Type</label>
+                        <select class="form-select form-select-sm" id="filterType">
+                            <option value="All">All Transactions</option>
+                            <option value="Income">Income Only</option>
+                            <option value="Expense">Expenses Only</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="searchQuery" class="form-label text-muted small">Search Transactions</label>
+                        <input type="text" class="form-control form-control-sm" id="searchQuery" placeholder="Search by description or category">
+                    </div>
+                </div>
+
+            
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Amount (LKR)</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-4">No transactions found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
